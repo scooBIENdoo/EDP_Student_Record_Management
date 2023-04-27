@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Text
 Imports System.Windows
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports MySql.Data.MySqlClient
@@ -113,16 +114,14 @@ Public Class Form2
     End Sub
 
     Private Sub btn_backup_data_1_Click(sender As Object, e As EventArgs) Handles btn_backup_data_1.Click
-        ' Display a warning message asking the user if they want to proceed with the backup
+
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to backup your database?", "Backup Database", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        ' If the user clicks Yes, proceed with the backup
         If result = DialogResult.Yes Then
-            ' Create a backup file name based on the current date and time
+
             Dim backupFileName As String = $"it_student_record_backup_{DateTime.Now.ToString("yyyyMMddHHmmss")}.sql"
             Dim backupFilePath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), backupFileName)
 
-            ' Backup the database to the specified file
             Try
                 Connect_to_DB()
                 Dim cmd As New Process()
@@ -139,7 +138,6 @@ Public Class Form2
                 cmd.WaitForExit()
                 Disconnect_to_DB()
 
-                ' Display a success message
                 MessageBox.Show("Database backup completed successfully.", "Backup Database", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 MessageBox.Show($"An error occurred during the backup process: {ex.Message}", "Backup Database", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -148,12 +146,10 @@ Public Class Form2
     End Sub
 
     Private Sub btn_locate_data_1_Click(sender As Object, e As EventArgs) Handles btn_locate_data_1.Click
-        'Display a File Open dialog to select the backup file
         Dim openFileDialog1 As New OpenFileDialog()
         openFileDialog1.Filter = "Backup Files (*.sql)|*.sql|All Files (*.*)|*.*"
         openFileDialog1.Title = "Select a Backup File"
 
-        'Check if the user selected a file and update the location textbox with the file path
         If openFileDialog1.ShowDialog() = DialogResult.OK Then
             txtBackupLocation.Text = openFileDialog1.FileName
         End If
@@ -193,5 +189,9 @@ Public Class Form2
             End Try
             Disconnect_to_DB()
         End If
+    End Sub
+
+    Private Sub btn_print_record_1_Click(sender As Object, e As EventArgs) Handles btn_print_record_1.Click
+        Print.PrintToExcel(DataGridView1)
     End Sub
 End Class

@@ -33,3 +33,5 @@ C:\Users\Acer\source\repos\EDP_Activity_4\EDP_Activity_4\obj\Debug\net6.0-window
 C:\Users\Acer\source\repos\EDP_Activity_4\EDP_Activity_4\obj\Debug\net6.0-windows\EDP_Activity_4.Form4.resources
 C:\Users\Acer\source\repos\EDP_Activity_4\EDP_Activity_4\obj\Debug\net6.0-windows\EDP_Activity_4.Form5.resources
 C:\Users\Acer\source\repos\EDP_Activity_4\EDP_Activity_4\obj\Debug\net6.0-windows\EDP_Activity_4.Resources.resources
+C:\Users\Acer\source\repos\EDP_Activity_4\EDP_Activity_4\obj\Debug\net6.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Acer\source\repos\EDP_Activity_4\EDP_Activity_4\obj\Debug\net6.0-windows\EDP_Activity_4.vbproj.ResolveComReference.cache

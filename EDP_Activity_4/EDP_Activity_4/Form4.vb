@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 Public Class Form4
     Private Sub DataGridView3_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView3.CellContentClick
 
@@ -105,5 +106,82 @@ Public Class Form4
         Dim loginForm As New Form1()
         loginForm.Show()
         Me.Close()
+    End Sub
+
+    Private Sub btn_print_record_3_Click(sender As Object, e As EventArgs) Handles btn_print_record_3.Click
+        Print.PrintToExcel(DataGridView3)
+    End Sub
+
+    Private Sub btn_upload_3_Click(sender As Object, e As EventArgs) Handles btn_upload_3.Click
+        Dim openFileDialog1 As New OpenFileDialog With {
+            .Filter = "Text Files (*.csv)|*.csv|All Files (*.*)|*.*",
+            .FilterIndex = 1,
+            .RestoreDirectory = True
+        }
+
+        If openFileDialog1.ShowDialog() = DialogResult.OK Then
+            Dim filePath As String = openFileDialog1.FileName
+            Dim path As String = filePath.Replace("\", "/")
+
+            Call Connect_to_DB()
+            Dim mycmd As New MySqlCommand
+
+            Try
+                strSQL = "Load DATA INFILE '" & path & "' INTO TABLE students " &
+                         "FIELDS TERMINATED BY ',' " &
+                         "LINES TERMINATED BY '\r\n' " &
+                         "IGNORE 1 LINES"
+
+                mycmd.CommandText = strSQL
+                mycmd.Connection = myconn
+                mycmd.ExecuteNonQuery()
+                MessageBox.Show("Data uploaded successfully")
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+            Disconnect_to_DB()
+        End If
+    End Sub
+
+    Private Sub btn_backup_data_3_Click(sender As Object, e As EventArgs) Handles btn_backup_data_3.Click
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to backup your database?", "Backup Database", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+
+            Dim backupFileName As String = $"it_student_record_backup_{DateTime.Now.ToString("yyyyMMddHHmmss")}.sql"
+            Dim backupFilePath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), backupFileName)
+
+            Try
+                Connect_to_DB()
+                Dim cmd As New Process()
+                cmd.StartInfo.FileName = "cmd.exe"
+                cmd.StartInfo.RedirectStandardInput = True
+                cmd.StartInfo.RedirectStandardOutput = True
+                cmd.StartInfo.CreateNoWindow = True
+                cmd.StartInfo.UseShellExecute = False
+                cmd.Start()
+                Dim backupCommand As String = $"mysqldump -u root -pReu_114606100073 --lock-tables=false --routines --triggers it_student_record_management > ""{backupFilePath}"""
+                cmd.StandardInput.WriteLine(backupCommand)
+                cmd.StandardInput.Flush()
+                cmd.StandardInput.Close()
+                cmd.WaitForExit()
+                Disconnect_to_DB()
+
+                MessageBox.Show("Database backup completed successfully.", "Backup Database", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                MessageBox.Show($"An error occurred during the backup process: {ex.Message}", "Backup Database", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Sub btn_locate_data_3_Click(sender As Object, e As EventArgs) Handles btn_locate_data_3.Click
+        Dim openFileDialog1 As New OpenFileDialog()
+        openFileDialog1.Filter = "Backup Files (*.sql)|*.sql|All Files (*.*)|*.*"
+        openFileDialog1.Title = "Select a Backup File"
+
+        If openFileDialog1.ShowDialog() = DialogResult.OK Then
+            txtBackupLocation.Text = openFileDialog1.FileName
+        End If
     End Sub
 End Class

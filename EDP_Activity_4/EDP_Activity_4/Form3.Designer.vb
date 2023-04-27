@@ -35,9 +35,14 @@ Partial Class Form3
         Me.fname_2 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.btn_logout_2 = New System.Windows.Forms.Button()
+        Me.txtBackupLocation = New System.Windows.Forms.TextBox()
+        Me.btn_print_record_2 = New System.Windows.Forms.Button()
+        Me.btn_locate_data_2 = New System.Windows.Forms.Button()
+        Me.btn_backup_data_2 = New System.Windows.Forms.Button()
+        Me.btn_upload_2 = New System.Windows.Forms.Button()
         Me.btn_load_user_2 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.btn_logout_2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -183,6 +188,11 @@ Partial Class Form3
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(76, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.txtBackupLocation)
+        Me.Panel2.Controls.Add(Me.btn_print_record_2)
+        Me.Panel2.Controls.Add(Me.btn_locate_data_2)
+        Me.Panel2.Controls.Add(Me.btn_backup_data_2)
+        Me.Panel2.Controls.Add(Me.btn_upload_2)
         Me.Panel2.Controls.Add(Me.btn_load_user_2)
         Me.Panel2.Controls.Add(Me.DataGridView2)
         Me.Panel2.Location = New System.Drawing.Point(317, 135)
@@ -190,24 +200,63 @@ Partial Class Form3
         Me.Panel2.Size = New System.Drawing.Size(1014, 488)
         Me.Panel2.TabIndex = 1
         '
-        'btn_logout_2
+        'txtBackupLocation
         '
-        Me.btn_logout_2.BackColor = System.Drawing.Color.Firebrick
-        Me.btn_logout_2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btn_logout_2.ForeColor = System.Drawing.Color.White
-        Me.btn_logout_2.Location = New System.Drawing.Point(1180, 38)
-        Me.btn_logout_2.Name = "btn_logout_2"
-        Me.btn_logout_2.Size = New System.Drawing.Size(137, 45)
-        Me.btn_logout_2.TabIndex = 3
-        Me.btn_logout_2.Text = "Logout"
-        Me.btn_logout_2.UseVisualStyleBackColor = False
+        Me.txtBackupLocation.Location = New System.Drawing.Point(331, 384)
+        Me.txtBackupLocation.Name = "txtBackupLocation"
+        Me.txtBackupLocation.Size = New System.Drawing.Size(382, 27)
+        Me.txtBackupLocation.TabIndex = 7
+        '
+        'btn_print_record_2
+        '
+        Me.btn_print_record_2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_print_record_2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btn_print_record_2.Location = New System.Drawing.Point(174, 435)
+        Me.btn_print_record_2.Name = "btn_print_record_2"
+        Me.btn_print_record_2.Size = New System.Drawing.Size(137, 29)
+        Me.btn_print_record_2.TabIndex = 6
+        Me.btn_print_record_2.Text = "Print Record"
+        Me.btn_print_record_2.UseVisualStyleBackColor = False
+        '
+        'btn_locate_data_2
+        '
+        Me.btn_locate_data_2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_locate_data_2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btn_locate_data_2.Location = New System.Drawing.Point(174, 383)
+        Me.btn_locate_data_2.Name = "btn_locate_data_2"
+        Me.btn_locate_data_2.Size = New System.Drawing.Size(137, 29)
+        Me.btn_locate_data_2.TabIndex = 5
+        Me.btn_locate_data_2.Text = "Locate Data"
+        Me.btn_locate_data_2.UseVisualStyleBackColor = False
+        '
+        'btn_backup_data_2
+        '
+        Me.btn_backup_data_2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_backup_data_2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btn_backup_data_2.Location = New System.Drawing.Point(18, 435)
+        Me.btn_backup_data_2.Name = "btn_backup_data_2"
+        Me.btn_backup_data_2.Size = New System.Drawing.Size(137, 29)
+        Me.btn_backup_data_2.TabIndex = 4
+        Me.btn_backup_data_2.Text = "Backup Data"
+        Me.btn_backup_data_2.UseVisualStyleBackColor = False
+        '
+        'btn_upload_2
+        '
+        Me.btn_upload_2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_upload_2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btn_upload_2.Location = New System.Drawing.Point(18, 382)
+        Me.btn_upload_2.Name = "btn_upload_2"
+        Me.btn_upload_2.Size = New System.Drawing.Size(137, 29)
+        Me.btn_upload_2.TabIndex = 3
+        Me.btn_upload_2.Text = "Upload Data"
+        Me.btn_upload_2.UseVisualStyleBackColor = False
         '
         'btn_load_user_2
         '
         Me.btn_load_user_2.BackColor = System.Drawing.Color.DarkBlue
         Me.btn_load_user_2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btn_load_user_2.ForeColor = System.Drawing.Color.White
-        Me.btn_load_user_2.Location = New System.Drawing.Point(863, 436)
+        Me.btn_load_user_2.Location = New System.Drawing.Point(863, 384)
         Me.btn_load_user_2.Name = "btn_load_user_2"
         Me.btn_load_user_2.Size = New System.Drawing.Size(137, 29)
         Me.btn_load_user_2.TabIndex = 2
@@ -222,8 +271,20 @@ Partial Class Form3
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.RowHeadersWidth = 51
         Me.DataGridView2.RowTemplate.Height = 29
-        Me.DataGridView2.Size = New System.Drawing.Size(982, 412)
+        Me.DataGridView2.Size = New System.Drawing.Size(982, 336)
         Me.DataGridView2.TabIndex = 1
+        '
+        'btn_logout_2
+        '
+        Me.btn_logout_2.BackColor = System.Drawing.Color.Firebrick
+        Me.btn_logout_2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btn_logout_2.ForeColor = System.Drawing.Color.White
+        Me.btn_logout_2.Location = New System.Drawing.Point(1180, 38)
+        Me.btn_logout_2.Name = "btn_logout_2"
+        Me.btn_logout_2.Size = New System.Drawing.Size(137, 45)
+        Me.btn_logout_2.TabIndex = 3
+        Me.btn_logout_2.Text = "Logout"
+        Me.btn_logout_2.UseVisualStyleBackColor = False
         '
         'Form3
         '
@@ -241,6 +302,7 @@ Partial Class Form3
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -262,4 +324,9 @@ Partial Class Form3
     Friend WithEvents btn_delete_2 As Button
     Friend WithEvents btn_load_user_2 As Button
     Friend WithEvents btn_logout_2 As Button
+    Friend WithEvents btn_backup_data_2 As Button
+    Friend WithEvents btn_upload_2 As Button
+    Friend WithEvents btn_print_record_2 As Button
+    Friend WithEvents btn_locate_data_2 As Button
+    Friend WithEvents txtBackupLocation As TextBox
 End Class
